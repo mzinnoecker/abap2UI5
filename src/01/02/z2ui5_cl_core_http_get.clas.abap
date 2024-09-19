@@ -108,6 +108,8 @@ CLASS z2ui5_cl_core_http_get IMPLEMENTATION.
         z2ui5_cl_cc_geoloc=>get_js( ) &&
         z2ui5_cl_cc_file_upl=>get_js( ) &&
         z2ui5_cl_cc_multiinput=>get_js( ) &&
+        z2ui5_cl_cc_token=>get_js( ) &&
+        z2ui5_cl_cc_tokens=>get_js( ) &&
         z2ui5_cl_cc_uitable=>get_js( ) &&
         z2ui5_cl_cc_util=>get_js( ) &&
         z2ui5_cl_cc_favicon=>get_js( ) &&
@@ -196,7 +198,7 @@ CLASS z2ui5_cl_core_http_get IMPLEMENTATION.
 
     DATA(lv_two_way_model) = z2ui5_if_core_types=>cs_ui5-two_way_model.
 
-    result = ` if (!z2ui5.Controller) { ` && |\n| &&
+    result = `debugger; if (!z2ui5.Controller) { ` && |\n| &&
     `sap.ui.define("z2ui5/Controller", ["sap/ui/core/mvc/Controller", "sap/ui/core/mvc/XMLView", "sap/ui/model/json/JSONModel", "sap/ui/core/BusyIndicator", "sap/m/MessageBox", "sap/m/MessageToast", "sap/ui/core/Fragment", "sap/m/BusyDialog` &&
 `",   "sap/ui/VersionInfo" ], function(Control` &&
   `ler, XMLView, JSONModel, BusyIndicator, MessageBox, MessageToast, Fragment, mBusyDialog, VersionInfo ) {` && |\n| &&
@@ -607,6 +609,7 @@ CLASS z2ui5_cl_core_http_get IMPLEMENTATION.
                `                preprocessors: { xml: { models: { template: oview_model } } }` && |\n| &&
                `            });` && |\n| &&
                `            sap.z2ui5.oView.setModel(sap.z2ui5.oDeviceModel, "device");` && |\n| &&
+               `           debugger;` && |\n| &&
                `            if (sap.z2ui5.oParent) {` && |\n| &&
                `                sap.z2ui5.oParent.removeAllPages();` && |\n| &&
                `                sap.z2ui5.oParent.insertPage(sap.z2ui5.oView);` && |\n| &&
@@ -675,6 +678,7 @@ CLASS z2ui5_cl_core_http_get IMPLEMENTATION.
   METHOD main_get_preload_script.
 
     result = `<script>` && |\n| &&
+             `  debugger;` && |\n| &&
              `  function onInitComponent(){` && |\n| &&
              `    sap.ui.require.preload({` && |\n| &&
              `      "z2ui5/manifest.json": '{` &&
@@ -717,6 +721,7 @@ CLASS z2ui5_cl_core_http_get IMPLEMENTATION.
              `          sap.ui.define(["sap/ui/core/mvc/Controller", "z2ui5/Controller", "sap/ui/core/BusyIndicator"], function(BaseController, Controller, BusyIndicator){` && |\n| &&
              `              return BaseController.extend("z2ui5.controller.RootController", {` && |\n| &&
              `                  onInit: function(){` && |\n| &&
+             `                      debugger;` && |\n| &&
              `                      BusyIndicator.show();` && |\n| &&
              `                      sap.z2ui5.oController = new Controller();` && |\n| &&
              `                      sap.z2ui5.oControllerNest = new Controller();` && |\n| &&
